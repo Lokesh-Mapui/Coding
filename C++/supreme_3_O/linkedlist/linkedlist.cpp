@@ -56,7 +56,7 @@ node*insertattail(int value,node*&head,node*&tail){
 }
 
 node* insertatpos(int value,int pos,node*&head,node*&tail){
-    int len=getlength(head);
+    int len = getlength(head);
     if(pos==1){
         head=insertathead(value,head,tail);
     }
@@ -64,7 +64,14 @@ node* insertatpos(int value,int pos,node*&head,node*&tail){
         insertattail(value,head,tail);
     }
     else{
-        
+        node*temp=head;
+        for(int i=0;i<pos-2;i++)
+        {
+            temp=temp->next;
+        }
+        node*newnode= new node(value);
+        newnode ->next=temp->next;
+        temp->next=newnode;
     }
 }
 
@@ -93,9 +100,9 @@ int main()
     node*tail=NULL;
 
 head=insertattail(101,head,tail);
-print(head);
+// print(head);
 head=insertattail(102,head,tail);
-print(head);
+// print(head);
 head=insertattail(103,head,tail);
 print(head);
 
