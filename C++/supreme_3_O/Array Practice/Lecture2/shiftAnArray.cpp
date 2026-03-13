@@ -6,15 +6,20 @@ void rotatearray(int arr[],int n,int shift){
     if(finalshift==0){
         return;
     }
+    // step1: copy last n elements into a temp array
     int temp[1000];
     int index= 0;
     for(int i=n-finalshift;i<n;i++){
         temp[index]=arr[i];
         index++;
     }
+    // step2: shift array elements by finalshift places
       for(int i=n-1;i>=0;i--){
-        arr[i]=arr[i-finalshift];
+        if(i-finalshift>=0){
+            arr[i]=arr[i-finalshift];
+        }
       }
+    //   step3: copy temp array elements into original array
       for(int i=0;i<finalshift;i++){
         arr[i]=temp[i];
       }
